@@ -1,0 +1,49 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fiction/style.css' %}">
+    <title>{{ fiction_data.fiction_name }}</title>
+</head>
+<body class="container">
+<div style="margin: 30px;"></div>
+<div class="box">
+    <div class="fiction-detail-info-box">
+       <div class="detail-image-box">
+           <img src="{{ fiction_data.fiction_image_url }}" alt="">
+       </div>
+       <div class="title-box">
+           {{ fiction_data.fiction_name }}
+       </div>
+       <div class="author-box">
+           <span class="tag is-primary is-light">{{ fiction_data.fiction_author }}</span>
+           |
+           <span class="tag is-success is-light">{{ fiction_data.fiction_type }}</span>
+       </div>
+       <div class="introduce-box">
+           {{ fiction_data.fiction_introduce }}
+       </div>
+        <div class="other-info-box">
+            {{ fiction_data.fiction_info }}
+        </div>
+    </div>
+</div>
+{%if chapter_list %}
+<div class="fixed-grid has-4-cols">
+    <div class="grid">
+    {% for each_chapter in chapter_list %}
+      <a href="#">
+          <div class="cell">
+              <div class="box">
+                  {{ each_chapter.chapter_name }}
+              </div>
+          </div>
+      </a>
+    {% endfor %}
+    </div>
+</div>
+{% else %}
+<p>No Data.</p>
+{% endif %}
+</body>
+</html>
