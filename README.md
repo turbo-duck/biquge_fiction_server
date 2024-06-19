@@ -7,3 +7,6 @@
 
 # 详细页面
 ![](./images/details.png)
+
+# 小说内容
+![](./images/chapter_detail.png)
