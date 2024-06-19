@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.template import loader
 from django.views import generic
 
-from .models import FictionList, ChapterList
+from .models import FictionList, ChapterList, ChapterDetailList
 import json
 import re
 
@@ -25,3 +25,15 @@ def detail(request, fiction_code):
         "chapter_list": chapter_list,
     }
     return render(request, "fiction/detail.html", context)
+
+
+def chapter_detail(request, chapter_code):
+    chapter_info = get_object_or_404(ChapterList, chapter_code=chapter_code)
+    chapter_data = get_object_or_404(ChapterDetailList, chapter_code=chapter_code)
+    chapter_data_list = json.loads(chapter_data.chapter_content)
+    context = {
+        "chapter_info": chapter_info,
+        "chapter_data_list": chapter_data_list,
+    }
+    return render(request, "fiction/chapter_detail.html", context)
+
