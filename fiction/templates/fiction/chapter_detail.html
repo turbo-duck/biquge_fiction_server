@@ -1,0 +1,24 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fiction/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fiction/style.css' %}">
+    <title>{{ chapter_info.chapter_name }}</title>
+</head>
+<body class="container">
+<div style="margin: 30px;"></div>
+<h1 class="title">{{ chapter_info.chapter_name }}</h1>
+
+<div class="box">
+{% if chapter_data_list %}
+    {% for each_content in chapter_data_list %}
+    <div class="block">
+        {{ each_content }}
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No Data.</p>
+{% endif %}
+</div>
+</body>
+</html>

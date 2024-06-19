@@ -1,7 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'fiction/bulma.min.css' %}">
     <link rel="stylesheet" href="{% static 'fiction/style.css' %}">
     <title>{{ fiction_data.fiction_name }}</title>
 </head>
@@ -32,7 +32,7 @@
 <div class="fixed-grid has-4-cols">
     <div class="grid">
     {% for each_chapter in chapter_list %}
-      <a href="#">
+      <a href="{% url 'fiction:chapter_detail' each_chapter.chapter_code %}" target="_blank">
           <div class="cell">
               <div class="box">
                   {{ each_chapter.chapter_name }}
